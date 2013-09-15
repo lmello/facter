@@ -15,20 +15,22 @@ end
 
 group :development, :test do
   gem 'rake'
-  gem 'facter', ">= 1.0.0", :path => File.expand_path("..", __FILE__)
   gem 'rspec', "~> 2.11.0"
   gem 'mocha', "~> 0.10.5"
-  gem 'json', "~> 1.7"
+  gem 'json', "~> 1.7", :platforms => :ruby
   gem 'puppetlabs_spec_helper'
 end
 
 platform :mswin, :mingw do
+  gem "sys-admin", "~> 1.5.6"
   gem "win32-api", "~> 1.4.8"
   gem "win32-dir", "~> 0.3.7"
   gem "windows-api", "~> 0.4.1"
   gem "windows-pr", "~> 1.2.1"
   gem "win32console", "~> 1.3.2"
 end
+
+gem 'facter', ">= 1.0.0", :path => File.expand_path("..", __FILE__)
 
 if File.exists? "#{__FILE__}.local"
   eval(File.read("#{__FILE__}.local"), binding)
